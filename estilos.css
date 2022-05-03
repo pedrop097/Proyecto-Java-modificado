@@ -1,0 +1,55 @@
+body{
+    background-color: darkgray;
+}
+
+h1{
+    margin: 10px; 
+    display: flex;
+    justify-content: center; 
+}
+.seleccion{
+    margin: 10px; 
+    display: flex;
+    justify-content: center; 
+}
+.card{
+    margin: 10px; 
+    align-items: center;
+   border: 3px solid black;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+.productoEnCarrito{
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+.ordenCompras{
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#contenedor-productos {
+     margin: 40px auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+#search{
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.precioProducto{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+.botonPagar{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
