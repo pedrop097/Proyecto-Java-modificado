@@ -91,11 +91,10 @@ function mostrarCarrito(productoAgregar) {
             cancelButtonText: "No, quiero borrar",
         }).then((result) => {
             if (result.isConfirmed) {
+                
                 productoAgregar.cantidad = productoAgregar.cantidad - 1
                 btnEliminar.parentElement.remove()
-              
                 carritodeCompras = carritodeCompras.filter(item => item.id != productoAgregar.id)
-
                 actualizarCarrito()
                 localStorage.setItem('carrito', JSON.stringify(carritodeCompras))
             } else {
@@ -144,10 +143,7 @@ recuperar()
 
 
 
-// let edad = 18;
 
-// const resultado = edad >= 18 && "Puedes beber"
-// console.log(resultado)
 
 
 
@@ -170,8 +166,7 @@ document.querySelector("#pagar").addEventListener("click", () =>
                 icon: "success",
                          
                 
-            }
-            
+            }           
             )
           
  
@@ -189,24 +184,43 @@ document.querySelector("#pagar").addEventListener("click", () =>
 
 
 
-// document.querySelector("#mayor").addEventListener("click", () =>
-//     Swal.fire({
-//         title: "Puedes comprar en nuestra pagina",
-//         icon: "success",
-//        confirmButtonText: `Comprar <a href="./index.html"></a>`,
-   
 
-//     }
-//      )
-// )
+document.querySelector("#mayor").addEventListener("click", () =>
+    Swal.fire({
+        title: "Puedes comprar en nuestra pagina",
+        icon: "success",
+       confirmButtonText: "Comprar",
+       cancelButtonText: "Volver",
+      showCancelButton:true,
+    
 
-// document.querySelector("#menor").addEventListener("click", () =>
-//     Swal.fire({
-//         title: "No puedes comprar",
-//         icon: "warning",
-//        confirmButtonText: `Confirmar <a href="./menor.html"></a>`,
-   
+    } ).then((result) =>{
+        if(result.isConfirmed){
+    document.querySelector('#contenedor-productos').style.display = "flex"
+       document.querySelector("#bienvenido").innerHTML = `<h1 class="bienvenido2">BIENVENIDO A DIONISO SHOP DE BEBIDAS</h1>`
+       
+        }
+        else{
+            document.querySelector('#contenedor-productos').style.display = "flex"
+        }
+    }))
 
-//     }
-//      )
-// )
+
+document.querySelector("#menor").addEventListener("click", () =>
+    Swal.fire({
+        title: "No puedes comprar",
+        icon: "warning",
+        showCancelButton:true,
+       confirmButtonText: "Confirmar",
+       cancelButtonText:"Volver",
+     
+
+    } ).then((result) =>{
+    if(result.isConfirmed){
+document.querySelector('#contenedor-productos').style.display = "none"
+
+    }
+    else{
+        document.querySelector('#contenedor-productos').style.display = "none"
+    }
+}))

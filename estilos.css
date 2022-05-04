@@ -53,3 +53,7 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+.bienvenido2{
+    background-color: red;
+}
