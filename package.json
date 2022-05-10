@@ -1,0 +1,19 @@
+{
+  "name": "proyecto-java-modificado",
+  "version": "3.1.2",
+  "description": "Proyecto modificado",
+  "main": "principal.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrop097/Proyecto-Java-modificado.git"
+  },
+  "author": "pedro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedrop097/Proyecto-Java-modificado/issues"
+  },
+  "homepage": "https://github.com/pedrop097/Proyecto-Java-modificado#readme"
+}

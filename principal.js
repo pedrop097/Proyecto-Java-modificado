@@ -10,44 +10,46 @@ const finCompra = document.getElementById('fin-compra');
 const contadorCarrito = document.getElementById('contadorCarrito');
 const precioTotal = document.getElementById('precioTotal');
 
-// const selecDescripcion = document.getElementById('selecDescripcion');
+const selecDescripcion = document.getElementById('selecDescripcion');
 const buscador = document.getElementById('search');
 
 
+let stockProductos;
+fetch('stock.json')
+    .then((resp) => resp.json())
+    .then((data) => stockProductos = data)
 
-// selecDescripcion.addEventListener('change',()=>{
-//     if(selecDescripcion.value == 'all'){
-//         mostrarProductos(stockProductos)
-//     }else{
-//         mostrarProductos(stockProductos.filter(elemento => elemento.descripcion == selecDescripcion.value))
-//     }
-// })
+function mostrarProductos() {
+    fetch('stock.json')
+        .then((resp) => resp.json())
+        .then((data) => {
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'producto';
+                div.innerHTML = `
+            <div class="card" style="width: 18rem;">
+            <img src="${item.img}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${item.nombre}</h5>
+                <p class="card-text">${item.descripcion}</p>
+                <p> ${item.tipo}</p>
+                <p> $${item.precio}</p>
+                   <a id="agregar${item.id}" class="btn btn-primary">Añadir</a>
+                
+            </div>
+            </div>
+            `
+                contenedorProductos.appendChild(div);
 
-mostrarProductos(stockProductos)
-// contenedorProductos.innerHTML= ""
-function mostrarProductos(array) {
-    array.forEach(({img, nombre, descripcion, tipo, precio, id}) => {
-        let div = document.createElement("div")
-        div.classList.add("producto")
-        div.innerHTML += `
-<div class="card" style="width: 18rem;">
-<img src="${img}" class="card-img-top" alt="...">
-<div class="card-body">
-    <h5 class="card-title">${nombre}</h5>
-    <p class="card-text">${descripcion}</p>
-    <p> ${tipo}</p>
-    <p> $${precio}</p>
-       <a id="agregar${id}" class="btn btn-primary">Añadir</a>
-    
-</div>
-</div>`
-        contenedorProductos.appendChild(div);
-        let btnAgregar = document.getElementById(`agregar${id}`)
-        btnAgregar.addEventListener('click', () => {
-            agregarAlCarrito(id)
+                let btnAgregar = document.getElementById(`agregar${item.id}`)
+                btnAgregar.addEventListener('click', () => {
+                    agregarAlCarrito(item.id)
+
+                })
+            })
         })
-    });
 }
+mostrarProductos()
 
 function agregarAlCarrito(id) {
     let productosUnd = carritodeCompras.find(item => item.id == id)
@@ -81,41 +83,53 @@ function mostrarCarrito(productoAgregar) {
 
     contenedorCarrito.appendChild(div)
     let btnEliminar = document.getElementById(`eliminar${productoAgregar.id}`)
+
     btnEliminar.addEventListener('click', () => {
+
+
+
         Swal.fire({
+
             title: `Estas seguro que quieres borrar a ${productoAgregar.nombre}`,
+
             icon: "warning",
+
             Text: `El producto: ${productoAgregar.nombre} sera eliminado del carrito de compras`,
+
             showCancelButton: true,
+
             confirmButtonText: "Si, quiero borrar",
+
             cancelButtonText: "No, quiero borrar",
+
         }).then((result) => {
-            if (result.isConfirmed) {
-                
-                productoAgregar.cantidad = productoAgregar.cantidad - 1
+
+
+
+            if ((result.isConfirmed) && (productoAgregar.cantidad == 1)) {
+
                 btnEliminar.parentElement.remove()
+
                 carritodeCompras = carritodeCompras.filter(item => item.id != productoAgregar.id)
+
                 actualizarCarrito()
+
                 localStorage.setItem('carrito', JSON.stringify(carritodeCompras))
+
             } else {
+
+                productoAgregar.cantidad = productoAgregar.cantidad - 1
+
                 document.getElementById(`und${productoAgregar.id}`).innerHTML = ` <p id=und:${productoAgregar.id}>Und:${productoAgregar.cantidad} </p>`
+
                 actualizarCarrito()
+
                 localStorage.setItem('carrito', JSON.stringify(carritodeCompras))
-                
+
             }
-        }
-        )
-        //   if(productoAgregar.cantidad == 1){
-        //         btnEliminar.parentElement.remove()
-        //       carritodeCompras = carritodeCompras.filter(item=> item.id != productoAgregar.id)
-        //       actualizarCarrito()
-        //       localStorage.setItem('carrito', JSON.stringify(carritodeCompras))
-        //   }else{
-        //     productoAgregar.cantidad = productoAgregar.cantidad - 1
-        //     document.getElementById(`und${productoAgregar.id}`).innerHTML =` <p id=und:${productoAgregar.id}>Und:${productoAgregar.cantidad} </p>`
-        //    actualizarCarrito()
-        //    localStorage.setItem('carrito', JSON.stringify(carritodeCompras))
-        //   }
+
+        })
+
     })
 
 
@@ -164,22 +178,22 @@ document.querySelector("#pagar").addEventListener("click", () =>
             Swal.fire({
                 title: "Felicitaciones por su compra",
                 icon: "success",
-                         
-                
-            }           
+
+
+            }
             )
-          
- 
+
+
 
         } else {
             Swal.fire({
                 title: "Felicitaciones, lo estaremos derivando con nuestro asesor para solicitar los datos de su tarjeta",
                 icon: "success",
             })
-           
+
         }
     }
-     )
+    )
 )
 
 
@@ -189,18 +203,18 @@ document.querySelector("#mayor").addEventListener("click", () =>
     Swal.fire({
         title: "Puedes comprar en nuestra pagina",
         icon: "success",
-       confirmButtonText: "Comprar",
-       cancelButtonText: "Volver",
-      showCancelButton:true,
-    
+        confirmButtonText: "Comprar",
+        cancelButtonText: "Volver",
+        showCancelButton: true,
 
-    } ).then((result) =>{
-        if(result.isConfirmed){
-    document.querySelector('#contenedor-productos').style.display = "flex"
-       document.querySelector("#bienvenido").innerHTML = `<h1 class="bienvenido2">BIENVENIDO A DIONISO SHOP DE BEBIDAS</h1>`
-       
+
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.querySelector('#contenedor-productos').style.display = "flex"
+            document.querySelector("#bienvenido").innerHTML = `<h1 class="bienvenido2">BIENVENIDO A DIONISO SHOP DE BEBIDAS</h1>`
+
         }
-        else{
+        else {
             document.querySelector('#contenedor-productos').style.display = "flex"
         }
     }))
@@ -210,17 +224,17 @@ document.querySelector("#menor").addEventListener("click", () =>
     Swal.fire({
         title: "No puedes comprar",
         icon: "warning",
-        showCancelButton:true,
-       confirmButtonText: "Confirmar",
-       cancelButtonText:"Volver",
-     
+        showCancelButton: true,
+        confirmButtonText: "Confirmar",
+        cancelButtonText: "Volver",
 
-    } ).then((result) =>{
-    if(result.isConfirmed){
-document.querySelector('#contenedor-productos').style.display = "none"
 
-    }
-    else{
-        document.querySelector('#contenedor-productos').style.display = "none"
-    }
-}))
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.querySelector('#contenedor-productos').style.display = "none"
+
+        }
+        else {
+            document.querySelector('#contenedor-productos').style.display = "none"
+        }
+    }))
