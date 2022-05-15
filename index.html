@@ -14,53 +14,96 @@
 
 <body>
     <header>
-        <h1 id="bienvenido">DIONISO SHOP DE BEBIDAS</h1>
-        <input id="search" type="text" class="input" placeholder="Buscar productos">
-     
-    </header>
-
-    <div class="seleccion">
-        <select class="selecDescripcion" aria-label="Default select example">
-            <option value="all">Todos</option>
-            <option value="vino">Vinos</option>
-            <option value="cerveza">Cervezas</option>
-            <option value="licor">Licores</option>
-        </select>
-        <div>
-           
-            </div>
+<div class="imagen">
+        <img class="logotipo" src="./imagenes/logotico.png" alt="Logo Dioniso">
     </div>
-    <main id="contenedor-productos"  style="display: flex; justify-content: space-between;">
-  
+        <h1 id="bienvenido">DIONISO SHOP DE BEBIDAS</h1>
+       
+        <!-- <input id="search" type="text" class="input" placeholder="Buscar productos"> -->
+
+    </header>
+    <div class="carousel">
+    <div id="carouselExampleControls" class="carousel slide  color4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./imagenes/cervezas2.png" class="ancho4"
+                    alt="variedad de cervezas">
+
+
+            </div>
+            <div class="carousel-item">
+                <img src="./imagenes/licores2.png" class="ancho4" alt="variedad de licores">
+
+            </div>
+            <div class="carousel-item">
+                <img src="./imagenes/vinos4.png" class="ancho4" alt="Los mejores vinos seleccionados">
+
+            </div>
+            
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon color4" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon color4" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<div class="envio">
+    <h2>HACEMOS ENVIOS A DOMICILIO</h2>
+    <img class="camion" src="./imagenes/envio.png" alt="Camion de envio">
+   
+</div>
+<div>
+<h3>REALIZADO TU PEDIDO A CONTINUACION</h3>
+<img class="flecha" src="./imagenes/2b07.png" alt="">
+</div>
+    <main id="contenedor-productos" style="display: flex; justify-content: space-between;">
+
 
     </main>
-
+   
 
 
     <div class="modal-contenedor">
-       <div id="carrito-contenedor">
-           <div  class="ordenCompras">
-            <h2>Orden de compras</h2>
-       <button type="button" class="btn btn-primary" id="boton-carrito"><span id="contadorCarrito">0</span> </button>
-            
-        </div>
+        <div id="carrito-contenedor">
+            <div class="ordenCompras">
+                <h2>Orden de compras</h2>
+                <button type="button" class="btn btn-primary" id="boton-carrito"><span id="contadorCarrito">0</span>
+                </button>
+
+            </div>
         </div>
         <h4 class="precioProducto">Precio total: $<span id="precioTotal">0</span></h4>
         <div id="terminar">
 
-
-
+            
         </div>
-        
+
     </div>
     <div class="botonPagar">
-    <button id="pagar">Finalizar Compra</button>
-</div>
-<button id="mayor">Mayor de 18 años</button>
-<button id="menor">No tengo 18 años</button>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <button id="pagar">Finalizar Compra</button>
+    </div>
+    <div class="mayor1">
+    <button id="mayor">Mayor de 18 años</button>
+    <button id="menor">No tengo 18 años</button>
+    </div>
+
+    <footer class="footerIndex">
+        <a href="https://serviciosweb.afip.gob.ar/clavefiscal/qr/publicInfoD.aspx"> <img class="datafiscal"
+                src="./imagenes/data-fiscal.png" alt="Data Fiscal"> </a>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <script src="stock.json"></script>
-   <script src="principal.js"></script>
+    <script src="principal.js"></script>
 </body>
+
 </html>

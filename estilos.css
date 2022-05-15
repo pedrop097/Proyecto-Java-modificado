@@ -1,11 +1,14 @@
 body{
-    background-color: darkgray;
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
 }
 
 h1{
-    margin: 10px; 
+    margin: 30px; 
     display: flex;
     justify-content: center; 
+    background: linear-gradient(90deg, #8f8f91 0%, #ccccdb 39%, #dceaec 100%);
 }
 .seleccion{
     margin: 10px; 
@@ -13,10 +16,11 @@ h1{
     justify-content: center; 
 }
 .card{
-    margin: 10px; 
+    margin: 30px; 
     align-items: center;
    border: 3px solid black;
    font-family: Georgia, 'Times New Roman', Times, serif;
+   background-color: darkgrey;
     
 }
 
@@ -56,4 +60,91 @@ h1{
 
 .bienvenido2{
     background-color: red;
+}
+.logotipo{
+    margin: 10px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    border: 3px solid aliceblue ;
+   
+    }
+.imagen{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+
+}
+
+.ancho1{
+    width: 700px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.color4 {
+    background-color: rgb(175, 45, 6);
+}
+.ancho4 {
+    width: 500px;
+    margin: 0% auto;
+    display: flex;
+    justify-content: center;
+  }
+  .carousel{
+      margin: 30px;
+  }
+
+  .camion {
+  width: 150px;
+  transform: translate(100px);
+  }
+
+  .envio{
+      margin: 10px;
+      display: flex;
+      justify-content: space-evenly;
+  }
+h2{
+    margin: 30px;
+    width: 300px;
+    color: green;
+}
+h3{
+    width: 700px;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(90deg, #8f8f91 0%, #5f5fc2 39%, #15c7e2 100%);
+}
+.flecha{
+    width: 100px;
+    margin: 10px;
+   
+}
+
+.footerIndex {
+    width: auto;
+    margin: 70px;
+    display: flex;
+    justify-content: flex-end;
+}
+.datafiscal {
+    width: 70px;
+  }
+
+  .wsp{
+      width: 50px;
+  }
+.form{
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.mayor1{
+    margin: 40px;
+    display: flex;
+    justify-content:flex-start;
 }

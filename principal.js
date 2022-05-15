@@ -161,6 +161,8 @@ recuperar()
 
 
 
+let numeroPedido = 998;
+
 
 document.querySelector("#pagar").addEventListener("click", () =>
     Swal.fire({
@@ -176,24 +178,82 @@ document.querySelector("#pagar").addEventListener("click", () =>
 
         if (result.isConfirmed) {
             Swal.fire({
-                title: "Felicitaciones por su compra",
+                title: "Felicitaciones por su compra, lo derivamos con nuestro asesor para realizar la transferencia correspondiente",
+                
                 icon: "success",
+               html:`
+               <a href="https://api.whatsapp.com/send?phone=+543516142466&text=Hola%21%20Quisiera%20m%C3%A1s%20info%20."
+                        target="_blank">
+                        <p id="presionar">Presione Aqui para contactarse con nuestro asesor</p>
+               <img class="wsp" src="./imagenes/Whatsapp-logo-5.png" alt="">
+               `,
 
-
-            }
+             
+            } 
+        
+         
+            
             )
-
-
-
+         
+            let btnVaciar = document.querySelector("#presionar")
+            btnVaciar.addEventListener("click", () =>
+            localStorage.clear('carrito'),
+          
+      
+            )
+            
         } else {
             Swal.fire({
-                title: "Felicitaciones, lo estaremos derivando con nuestro asesor para solicitar los datos de su tarjeta",
-                icon: "success",
+                confirmButtonText:"Confirmar",
+                title: "A continuacion podra ingresar los datos de su tarjeta",
+                icon: "info",
+               html:`
+               <div class"form">
+               <input type="text" class="form-control" placeholder="nombre y apellido">
+               <select name="Tipo de Tarjeta" class="form control">
+               <option>Visa</option>
+               <option>Mastercard</option>
+               <option>Cordobesa</option>
+               <option>Naranja</option>
+               </select>
+              
+               <input type="number" maxlength="16" placeholder="Numero de tarjeta" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+               <br>
+               <input type="number" maxlength="3" placeholder="Codigo de tarjeta" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+               <input type="month" name="fecha" id="fecha" class="form-control" value="2022-04">
+               <select name="Cantidad de pagos" class="form control">
+               <option>1</option>
+               <option>3</option>
+               <option>6</option>
+               <option>12</option>
+               </div>
+              
+               `
+            }).then((result) =>{
+                if(result.isConfirmed){
+                    swal.fire({
+                        title:"Felicitaciones por su compra",
+                        icon:"success",
+                        html: `<p> n° de pedido ${numeroPedido+1}`
+                        
+                    }
+                   
+                    )
+                    localStorage.clear('carrito');
+                  
+                }
+                
+             
             })
+         
 
         }
+      
+    
     }
+    
     )
+  
 )
 
 
@@ -232,9 +292,11 @@ document.querySelector("#menor").addEventListener("click", () =>
     }).then((result) => {
         if (result.isConfirmed) {
             document.querySelector('#contenedor-productos').style.display = "none"
+           
 
         }
         else {
             document.querySelector('#contenedor-productos').style.display = "none"
         }
     }))
+   
